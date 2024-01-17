@@ -1,12 +1,13 @@
 import 'theme.dart';
+import 'input_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const BMICalculator());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class BMICalculator extends StatelessWidget {
+  const BMICalculator({super.key});
 
   // This widget is the root of your application.
   @override
@@ -21,37 +22,11 @@ class MyApp extends StatelessWidget {
     );
     return MaterialApp(
       title: 'BMI Calculator',
-      theme: const MaterialTheme(textLightTheme).light(),
-      darkTheme: const MaterialTheme(textDarkTheme).dark(),
+      theme: const MaterialTheme(textLightTheme).light().copyWith(),
+      darkTheme: const MaterialTheme(textDarkTheme).dark().copyWith(
+          primaryColor: const Color(0xff0a0e21),
+          scaffoldBackgroundColor: const Color(0xff0a0e21)),
       home: const MyHomePage(title: 'BMI Calculator'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: const Center(
-        child: Text('Body Text'),
-      ),
-      floatingActionButton: const FloatingActionButton(
-        onPressed: null,
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
