@@ -6,8 +6,9 @@ import 'icon_content.dart';
 import 'reusable_card.dart';
 
 const bottomContainerHeight = 80.0;
-const activeCardColour = Color(0xff775652);
-const inactiveCardColour = Color(0xff904a42);
+const activeCardColour = Color(0xff904a42);
+const inactiveCardColour = Color(0xff775652);
+const textCardColour = Color(0xff231918);
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key, required this.title});
@@ -19,25 +20,28 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-
   Color maleCardColour = activeCardColour;
   Color femaleCardColour = activeCardColour;
-  static const Color textCardColour = Color(0xff231918);
 
   void updateColor(int gender) {
 
-    if(gender==1){
-      setState(() {
-        if(maleCardColour == inactiveCardColour){
-          maleCardColour =  activeCardColour;
+    setState(() {
+      if (gender == 1) {
+        if (maleCardColour == inactiveCardColour) {
+            maleCardColour = activeCardColour;
         } else {
           maleCardColour = inactiveCardColour;
         }
+      }
 
-        print(maleCardColour);
-      });
-    }
-
+      if(gender == 2){
+        if (femaleCardColour == inactiveCardColour) {
+          femaleCardColour = activeCardColour;
+        } else {
+          femaleCardColour = inactiveCardColour;
+        }
+      }
+    });
   }
 
   @override
@@ -60,7 +64,7 @@ class _InputPageState extends State<InputPage> {
                     },
                     child: ReusableCard(
                       colour: maleCardColour,
-                      cardChild: IconContent(
+                      cardChild: const IconContent(
                         color: textCardColour,
                         genre: "male",
                       ),
@@ -70,11 +74,11 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      updateColor(1);
+                      updateColor(2);
                     },
                     child: ReusableCard(
-                      colour: maleCardColour,
-                      cardChild: IconContent(
+                      colour: femaleCardColour,
+                      cardChild: const IconContent(
                         color: textCardColour,
                         genre: "female",
                       ),
