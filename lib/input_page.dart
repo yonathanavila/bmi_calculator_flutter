@@ -6,6 +6,8 @@ import 'icon_content.dart';
 import 'reusable_card.dart';
 
 const bottomContainerHeight = 80.0;
+const activeCardColour = Color(0xff775652);
+const inactiveCardColour = Color(0xff904a42);
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key, required this.title});
@@ -17,11 +19,29 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
+  Color maleCardColour = activeCardColour;
+  Color femaleCardColour = activeCardColour;
+  static const Color textCardColour = Color(0xff231918);
+
+  void updateColor(int gender) {
+
+    if(gender==1){
+      setState(() {
+        if(maleCardColour == inactiveCardColour){
+          maleCardColour =  activeCardColour;
+        } else {
+          maleCardColour = inactiveCardColour;
+        }
+
+        print(maleCardColour);
+      });
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
-    final Color backgroudColor = Theme.of(context).colorScheme.primaryContainer;
-    final Color itemsColor = Theme.of(context).colorScheme.onSurface;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.onSurface,
@@ -34,20 +54,30 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(
-                    colour: backgroudColor,
-                    cardChild: IconContent(
-                      color: itemsColor,
-                      genre: "male",
+                  child: GestureDetector(
+                    onTap: () {
+                      updateColor(1);
+                    },
+                    child: ReusableCard(
+                      colour: maleCardColour,
+                      cardChild: IconContent(
+                        color: textCardColour,
+                        genre: "male",
+                      ),
                     ),
                   ),
                 ),
                 Expanded(
-                  child: ReusableCard(
-                    colour: backgroudColor,
-                    cardChild:  IconContent(
-                      color: itemsColor,
-                      genre: "female",
+                  child: GestureDetector(
+                    onTap: () {
+                      updateColor(1);
+                    },
+                    child: ReusableCard(
+                      colour: maleCardColour,
+                      cardChild: IconContent(
+                        color: textCardColour,
+                        genre: "female",
+                      ),
                     ),
                   ),
                 ),
@@ -56,9 +86,9 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              colour: backgroudColor,
-              cardChild:  IconContent(
-                color: itemsColor,
+              colour: maleCardColour,
+              cardChild: IconContent(
+                color: textCardColour,
                 genre: "female",
               ),
             ),
@@ -68,18 +98,18 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusableCard(
-                    colour: backgroudColor,
-                    cardChild:  IconContent(
-                      color: itemsColor,
+                    colour: maleCardColour,
+                    cardChild: IconContent(
+                      color: textCardColour,
                       genre: "female",
                     ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: backgroudColor,
-                    cardChild:  IconContent(
-                      color: itemsColor,
+                    colour: maleCardColour,
+                    cardChild: IconContent(
+                      color: textCardColour,
                       genre: "female",
                     ),
                   ),
