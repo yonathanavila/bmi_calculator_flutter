@@ -26,7 +26,7 @@ class BMICalculator extends StatelessWidget {
       darkTheme: const MaterialTheme(textDarkTheme).dark().copyWith(
           primaryColor: const Color(0xff0a0e21),
           scaffoldBackgroundColor: const Color(0xff0a0e21)),
-      home: const MyHomePage(title: 'BMI Calculator'),
+      home: const InputPage(title: 'BMI Calculator'),
     );
   }
 }
