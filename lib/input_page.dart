@@ -6,7 +6,6 @@ import 'constants.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 
-
 enum Genre {
   female,
   male;
@@ -27,6 +26,7 @@ class _InputPageState extends State<InputPage> {
   Color maleCardColour = kActiveCardColour;
   Color femaleCardColour = kActiveCardColour;
   late Genre selectedGender = Genre.male;
+  int height = 120;
 
   @override
   Widget build(BuildContext context) {
@@ -77,9 +77,32 @@ class _InputPageState extends State<InputPage> {
                       selectedGender = Genre.male;
                     }),
                 colour: kActiveCardColour,
-                cardChild: const Column(
+                cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('HEIGHT', style: kLabelTextStyle,)
+                    Text(
+                      'HEIGHT',
+                      style: kLabelTextStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(height.toString(), style: kLabelSubtitleStyle),
+                        Text(
+                          'cm',
+                        )
+                      ],
+                    ),
+                    Slider(
+                        value: height.toDouble(),
+                        activeColor: Color(0xFFEB1555),
+                        inactiveColor: Color(0xFF8D8E98),
+                        max: 220.0,
+                        min: 120.0,
+                        onChanged: (value) =>
+                            setState(() => height = value.round()))
                   ],
                 )),
           ),
