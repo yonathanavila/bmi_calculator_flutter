@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
+import "constants.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class IconContent extends StatelessWidget {
-  const IconContent({
-    super.key,
-    required this.genre,
-    required this.color
-  });
+  const IconContent({super.key, required this.genre});
 
   final String genre;
-  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +27,15 @@ class IconContent extends StatelessWidget {
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Icon(
         icon,
-        color: color,
-        size: 80.0,
+        color: kLabelTextStyle.color,
+        size: kBottomContainerHeight,
       ),
       const SizedBox(
         height: 15.0,
       ),
       Text(
         label,
-        style: TextStyle(fontSize: 18.0, color: color),
+        style: kLabelTextStyle,
       )
     ]);
   }
