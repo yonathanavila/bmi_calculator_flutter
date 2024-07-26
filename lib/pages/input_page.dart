@@ -1,10 +1,11 @@
-import 'constants.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
-import 'results_page.dart';
-
+import 'package:bmi_calculator_flutter/components/common_button.dart';
+import 'package:bmi_calculator_flutter/components/icon_content.dart';
+import 'package:bmi_calculator_flutter/components/reusable_card.dart';
+import 'package:bmi_calculator_flutter/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'results_page.dart';
 
 enum Genre {
   female,
@@ -146,11 +147,7 @@ class _InputPageState extends State<InputPage> {
                             children: [
                               RoundIconButton(
                                 onPressed: () {
-                                  setState(
-                                    () {
-                                      ++weight;
-                                    },
-                                  );
+                                  setState(() => ++weight);
                                 },
                                 icon: FontAwesomeIcons.plus,
                               ),
@@ -200,11 +197,7 @@ class _InputPageState extends State<InputPage> {
                           children: [
                             RoundIconButton(
                               onPressed: () {
-                                setState(
-                                  () {
-                                    ++age;
-                                  },
-                                );
+                                setState(() => ++age);
                               },
                               icon: FontAwesomeIcons.plus,
                             ),
@@ -233,20 +226,12 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const ResultsPage()));
             },
-            child: Container(
-                color: Theme.of(context).colorScheme.error,
-                margin: const EdgeInsets.only(top: 10.0),
-                width: double.infinity,
-                height: kBottomContainerHeight,
-                child: const Text(
-                  style: TextStyle(fontSize: 20.0, color: Colors.white),
-                  'CALCULATE',
-                )),
+            buttonTitle: 'CALCULATE',
           ),
         ],
       ),
