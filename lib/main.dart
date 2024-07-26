@@ -1,7 +1,7 @@
-import 'theme.dart';
-import 'input_page.dart';
-
 import 'package:flutter/material.dart';
+
+import 'pages/input_page.dart';
+import 'theme.dart';
 
 void main() {
   runApp(const BMICalculator());
